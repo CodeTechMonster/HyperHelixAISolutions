@@ -396,8 +396,7 @@ export const ko: SiteContent = {
       '팀의 한 주를 삼키고 있는 그 업무를 들려주세요. AI가 정말 답인지 솔직하게 말씀드리고, 답이라면 무엇을 어떻게 할지 제안드리겠습니다.',
     button: '대화 시작하기',
     secondary: '서비스 살펴보기',
-    email: 'hello@hyperhelix.ai',
-    reassurance: '영업 시퀀스가 아니라 진짜 대화입니다. 영업일 기준 2일 내에 답변드립니다.',
+    reassurance: '영업 시퀀스가 아니라 진짜 대화입니다.',
   },
 
   footer: {
