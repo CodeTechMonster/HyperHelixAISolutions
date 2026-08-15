@@ -178,6 +178,7 @@ export interface SiteContent {
     lead: string
     button: string
     secondary: string
+    email: string
     reassurance: string
   }
 

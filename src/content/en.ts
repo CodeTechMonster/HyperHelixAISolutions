@@ -396,7 +396,8 @@ export const en: SiteContent = {
       'Tell us about the work that is eating your team’s week. We will tell you honestly whether AI is the right answer — and what we would do about it if it is.',
     button: 'Start the Conversation',
     secondary: 'See our services',
-    reassurance: 'A real conversation, not a sales sequence.',
+    email: 'hello@hyperhelix.ai',
+    reassurance: 'A real conversation, not a sales sequence. We reply within two business days.',
   },
 
   footer: {
