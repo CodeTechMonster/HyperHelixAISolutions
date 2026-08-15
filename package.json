@@ -1,0 +1,27 @@
+{
+  "name": "hyper-helix-ai-solutions",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Hyper Helix AI Solutions — Empowering Human Potential Through AI",
+  "scripts": {
+    "dev": "vite",
+    "build": "vue-tsc --noEmit && vite build",
+    "build:only": "vite build",
+    "preview": "vite preview",
+    "typecheck": "vue-tsc --noEmit"
+  },
+  "dependencies": {
+    "gsap": "^3.13.0",
+    "vue": "^3.5.41"
+  },
+  "devDependencies": {
+    "@tailwindcss/vite": "^4.3.3",
+    "@types/node": "^22.0.0",
+    "@vitejs/plugin-vue": "^6.0.0",
+    "tailwindcss": "^4.3.3",
+    "typescript": "~5.9",
+    "vite": "^7.0.0",
+    "vue-tsc": "^3.0.0"
+  }
+}

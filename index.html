@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="theme-color" content="#0A2342" />
+    <meta name="color-scheme" content="light" />
+
+    <title>Hyper Helix AI Solutions — Empowering Human Potential Through AI</title>
+    <meta
+      name="description"
+      content="Hyper Helix builds AI that amplifies people instead of replacing them. Human-centered AI enablement, business automation, security governance, and digital transformation."
+    />
+    <meta name="author" content="Hyper Helix AI Solutions" />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href="https://www.hyperhelix.ai/" />
+    <link rel="alternate" hreflang="en" href="https://www.hyperhelix.ai/" />
+    <link rel="alternate" hreflang="ko" href="https://www.hyperhelix.ai/?lang=ko" />
+    <link rel="alternate" hreflang="x-default" href="https://www.hyperhelix.ai/" />
+
+    <!-- Open Graph / Twitter (kept in markup so crawlers that don't run JS
+         still get a complete card; useSeo.ts keeps them in sync per locale) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Hyper Helix AI Solutions" />
+    <meta property="og:title" content="Hyper Helix AI Solutions — Empowering Human Potential Through AI" />
+    <meta
+      property="og:description"
+      content="AI that amplifies people, not replaces them. Human-centered AI enablement, automation, governance, and digital transformation."
+    />
+    <meta property="og:url" content="https://www.hyperhelix.ai/" />
+    <meta property="og:image" content="https://www.hyperhelix.ai/og-image.png" />
+    <meta property="og:locale" content="en_US" />
+    <meta property="og:locale:alternate" content="ko_KR" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <!-- Fonts: Sora (display) + Inter (UI) + Pretendard (Korean) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css"
+    />
+
+    <!-- Critical shell: paints the hero's deep-space field before the JS
+         bundle resolves, so there is no white flash and LCP lands earlier. -->
+    <style>
+      html,
+      body,
+      #app {
+        min-height: 100%;
+        margin: 0;
+      }
+      body {
+        background: #f8fafc;
+      }
+      #app-shell {
+        position: fixed;
+        inset: 0;
+        background: radial-gradient(120% 90% at 50% -10%, #123058 0%, #0a2342 38%, #04101f 78%);
+        z-index: -1;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app-shell" aria-hidden="true"></div>
+    <div id="app"></div>
+    <noscript>
+      <div style="padding: 4rem 1.5rem; font-family: system-ui, sans-serif; color: #111827">
+        <h1 style="font-size: 1.75rem; margin: 0 0 0.75rem">Hyper Helix AI Solutions</h1>
+        <p style="max-width: 42rem; line-height: 1.6">
+          Empowering Human Potential Through AI — AI that amplifies people, not replaces them.
+          This site needs JavaScript enabled. Reach us at
+          <a href="mailto:hello@hyperhelix.ai">hello@hyperhelix.ai</a>.
+        </p>
+      </div>
+    </noscript>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
