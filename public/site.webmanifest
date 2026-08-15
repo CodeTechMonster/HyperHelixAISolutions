@@ -1,0 +1,12 @@
+{
+  "name": "Hyper Helix AI Solutions",
+  "short_name": "Hyper Helix",
+  "description": "AI that amplifies people, not replaces them.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#04101f",
+  "theme_color": "#0A2342",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

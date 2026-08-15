@@ -1,0 +1,355 @@
+@import 'tailwindcss';
+
+/* ============================================================================
+   HYPER HELIX — DESIGN TOKENS
+   Tailwind v4 CSS-first theme. Every token below is emitted as both a CSS
+   custom property and a Tailwind utility (bg-space-900, text-cyan-500, …).
+   ========================================================================= */
+@theme {
+  /* -- Brand: Deep Space Blue -------------------------------------------- */
+  --color-space-50: #eef3fa;
+  --color-space-100: #d5e1f1;
+  --color-space-200: #a9c1e0;
+  --color-space-300: #6f92c2;
+  --color-space-400: #3d63a0;
+  --color-space-500: #1d4278;
+  --color-space-600: #123058;
+  --color-space-700: #0e2a4d;
+  --color-space-800: #0a2342; /* PRIMARY — Deep Space Blue */
+  --color-space-900: #071a33;
+  --color-space-950: #04101f;
+
+  /* -- Brand: Electric Cyan ---------------------------------------------- */
+  --color-cyan-50: #e6faff;
+  --color-cyan-100: #c0f2ff;
+  --color-cyan-200: #85e6ff;
+  --color-cyan-300: #47d7ff;
+  --color-cyan-400: #17caff;
+  --color-cyan-500: #00c2ff; /* SECONDARY — Electric Cyan */
+  --color-cyan-600: #009bd1;
+  --color-cyan-700: #0079a5;
+  --color-cyan-800: #005e80;
+  --color-cyan-900: #054d68;
+
+  /* -- Brand: Aurora Purple ---------------------------------------------- */
+  --color-aurora-50: #f1efff;
+  --color-aurora-100: #e3ddff;
+  --color-aurora-200: #cbc0ff;
+  --color-aurora-300: #ad9bff;
+  --color-aurora-400: #9479ff;
+  --color-aurora-500: #7b61ff; /* ACCENT — Aurora Purple */
+  --color-aurora-600: #6244e6;
+  --color-aurora-700: #4d33bd;
+  --color-aurora-800: #3d2b94;
+  --color-aurora-900: #322676;
+
+  /* -- Neutrals ----------------------------------------------------------- */
+  --color-mist-50: #ffffff;
+  --color-mist-100: #f8fafc; /* SUPPORT — Soft White */
+  --color-mist-200: #eef2f7;
+  --color-mist-300: #e2e8f0;
+  --color-mist-400: #cbd5e1;
+  --color-mist-500: #94a3b8;
+  --color-mist-600: #64748b;
+  --color-mist-700: #475569;
+  --color-mist-800: #334155;
+  --color-mist-900: #111827; /* TEXT — Ink */
+
+  /* -- Typography --------------------------------------------------------- */
+  --font-display:
+    'Sora', 'Pretendard', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-sans:
+    'Inter', 'Pretendard', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* Fluid type scale — clamp()-based, no breakpoint jumps */
+  --text-display-1: clamp(2.5rem, 1.7rem + 3.8vw, 5rem);
+  --text-display-1--line-height: 1.02;
+  --text-display-1--letter-spacing: -0.035em;
+  --text-display-1--font-weight: 700;
+
+  --text-display-2: clamp(2.25rem, 1.4rem + 3.6vw, 4.25rem);
+  --text-display-2--line-height: 1.06;
+  --text-display-2--letter-spacing: -0.03em;
+  --text-display-2--font-weight: 700;
+
+  --text-headline: clamp(1.75rem, 1.25rem + 2.1vw, 3rem);
+  --text-headline--line-height: 1.14;
+  --text-headline--letter-spacing: -0.022em;
+  --text-headline--font-weight: 600;
+
+  --text-title: clamp(1.25rem, 1.05rem + 0.85vw, 1.75rem);
+  --text-title--line-height: 1.25;
+  --text-title--letter-spacing: -0.015em;
+  --text-title--font-weight: 600;
+
+  --text-lead: clamp(1.0625rem, 0.98rem + 0.5vw, 1.375rem);
+  --text-lead--line-height: 1.6;
+
+  --text-eyebrow: 0.75rem;
+  --text-eyebrow--line-height: 1.2;
+  --text-eyebrow--letter-spacing: 0.22em;
+  --text-eyebrow--font-weight: 600;
+
+  /* -- Radii -------------------------------------------------------------- */
+  --radius-card: 1.5rem;
+  --radius-panel: 2rem;
+  --radius-pill: 999px;
+
+  /* -- Elevation (soft, diffuse, premium) --------------------------------- */
+  --shadow-glass: 0 1px 1px rgb(10 35 66 / 0.04), 0 8px 24px -8px rgb(10 35 66 / 0.12);
+  --shadow-lift: 0 2px 4px rgb(10 35 66 / 0.04), 0 24px 48px -16px rgb(10 35 66 / 0.22);
+  --shadow-glow: 0 0 0 1px rgb(0 194 255 / 0.18), 0 18px 60px -18px rgb(0 194 255 / 0.45);
+
+  /* -- Motion ------------------------------------------------------------- */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-soft: cubic-bezier(0.65, 0, 0.35, 1);
+  --duration-fast: 200ms;
+  --duration-base: 420ms;
+  --duration-slow: 900ms;
+
+  /* -- Layout ------------------------------------------------------------- */
+  --container-content: 76rem;
+  --container-prose: 46rem;
+}
+
+/* ============================================================================
+   BASE
+   ========================================================================= */
+@layer base {
+  :root {
+    color-scheme: light;
+    scroll-behavior: smooth;
+    /* Offset for the fixed header when jumping to #anchors */
+    scroll-padding-top: 6rem;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-mist-100);
+    color: var(--color-mist-900);
+    font-family: var(--font-sans);
+    font-synthesis-weight: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+
+  /* WCAG 2.1 — 2.4.7 Focus Visible. Never remove the indicator, restyle it. */
+  :focus-visible {
+    outline: 3px solid var(--color-cyan-500);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* WCAG 2.1 — 2.3.3 Animation from Interactions */
+  @media (prefers-reduced-motion: reduce) {
+    :root {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-cyan-500) 28%, transparent);
+    color: var(--color-space-900);
+  }
+}
+
+/* ============================================================================
+   COMPONENT PRIMITIVES
+   ========================================================================= */
+@layer components {
+  /* --- Layout ------------------------------------------------------------ */
+  .hh-container {
+    width: 100%;
+    max-width: var(--container-content);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 640px) {
+    .hh-container {
+      padding-inline: 2rem;
+    }
+  }
+  @media (min-width: 1024px) {
+    .hh-container {
+      padding-inline: 2.5rem;
+    }
+  }
+
+  .hh-section {
+    padding-block: clamp(4.5rem, 3rem + 6vw, 9rem);
+    position: relative;
+  }
+
+  /* --- Glassmorphism (Vision Pro layer language) ------------------------- */
+  .hh-glass {
+    background: color-mix(in srgb, white 78%, transparent);
+    backdrop-filter: blur(24px) saturate(160%);
+    -webkit-backdrop-filter: blur(24px) saturate(160%);
+    border: 1px solid color-mix(in srgb, white 70%, transparent);
+    box-shadow: var(--shadow-glass);
+  }
+
+  /* Sticky header needs more opacity than a card: body copy scrolling beneath
+     it must not remain legible through the blur. */
+  .hh-glass-strong {
+    background: color-mix(in srgb, white 90%, transparent);
+    backdrop-filter: blur(20px) saturate(150%);
+    -webkit-backdrop-filter: blur(20px) saturate(150%);
+    border-bottom: 1px solid color-mix(in srgb, var(--color-mist-300) 70%, transparent);
+    box-shadow: var(--shadow-glass);
+  }
+
+  .hh-glass-dark {
+    background: color-mix(in srgb, var(--color-space-800) 38%, transparent);
+    backdrop-filter: blur(24px) saturate(150%);
+    -webkit-backdrop-filter: blur(24px) saturate(150%);
+    border: 1px solid color-mix(in srgb, white 12%, transparent);
+  }
+
+  /* --- Gradient text ----------------------------------------------------- */
+  .hh-gradient-text {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-cyan-400) 0%,
+      var(--color-cyan-300) 32%,
+      var(--color-aurora-400) 78%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .hh-gradient-text-ink {
+    background-image: linear-gradient(
+      100deg,
+      var(--color-space-800) 0%,
+      var(--color-space-500) 42%,
+      var(--color-aurora-600) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* --- Hairline gradient rule ------------------------------------------- */
+  .hh-rule {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      color-mix(in srgb, var(--color-cyan-500) 55%, transparent),
+      transparent
+    );
+  }
+
+  /* --- Scroll reveal ----------------------------------------------------- */
+  .hh-reveal {
+    opacity: 0;
+    transform: translate3d(0, 22px, 0);
+    transition:
+      opacity var(--duration-slow) var(--ease-out-expo),
+      transform var(--duration-slow) var(--ease-out-expo);
+    transition-delay: var(--reveal-delay, 0ms);
+  }
+  .hh-reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .hh-reveal {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  /* --- Ambient aurora blobs ---------------------------------------------- */
+  /* Ambient colour blooms. Painted as a radial gradient rather than a blurred
+     solid: identical result, no filter pass, and no banding/moiré on GPUs that
+     approximate large blur radii. Colour comes from `currentColor`, so tint
+     these with a `text-*` utility, e.g. `.hh-aurora text-cyan-500/25`. */
+  .hh-aurora {
+    position: absolute;
+    border-radius: 999px;
+    pointer-events: none;
+    background-image: radial-gradient(closest-side, currentColor, transparent 100%);
+    opacity: 0.85;
+  }
+
+  /* --- Screen-reader only ------------------------------------------------ */
+  .hh-sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+  }
+}
+
+/* ============================================================================
+   UTILITIES
+   ========================================================================= */
+@utility bg-grid {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, var(--color-space-800) 6%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, var(--color-space-800) 6%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+@utility bg-grid-dark {
+  background-image:
+    linear-gradient(to right, color-mix(in srgb, white 5%, transparent) 1px, transparent 1px),
+    linear-gradient(to bottom, color-mix(in srgb, white 5%, transparent) 1px, transparent 1px);
+  background-size: 64px 64px;
+}
+
+/* Korean text needs slightly looser leading + no letter-spacing tightening */
+@utility lang-ko {
+  word-break: keep-all;
+  line-height: 1.7;
+  letter-spacing: -0.01em;
+}
+
+/* ============================================================================
+   LOCALE OVERRIDES
+   Deliberately unlayered: Tailwind's `utilities` layer beats any selector in
+   `base`/`components` regardless of specificity, so an override of a utility
+   has to sit outside the layer stack to win.
+
+   Wide letter-spacing is a Latin display device. Applied to Hangul it pushes
+   syllable blocks apart and reads as broken text, so eyebrows and tracked
+   labels tighten when the document is in Korean. Opt out on a Latin-only run
+   of text (the logo's "AI SOLUTIONS" descriptor) with `.hh-keep-tracking`.
+   ========================================================================= */
+html[lang='ko'] .text-eyebrow:not(.hh-keep-tracking),
+html[lang='ko'] [class*='tracking-[']:not(.hh-keep-tracking) {
+  letter-spacing: 0.045em;
+}

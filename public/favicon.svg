@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 148" width="120" height="148">
+  <defs>
+    <linearGradient id="bar" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#123058"/>
+      <stop offset="55%" stop-color="#0a2342"/>
+      <stop offset="100%" stop-color="#04101f"/>
+    </linearGradient>
+    <linearGradient id="ribbon" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#47d7ff"/>
+      <stop offset="28%" stop-color="#00c2ff"/>
+      <stop offset="66%" stop-color="#1d4278"/>
+      <stop offset="100%" stop-color="#0a2342"/>
+    </linearGradient>
+    <linearGradient id="metal" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#c9d3de"/>
+      <stop offset="45%" stop-color="#f4f7fa"/>
+      <stop offset="100%" stop-color="#9aa9b8"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#bar)">
+    <path d="M26 30 L52 22 L52 112 L26 120 Z"/>
+    <path d="M68 40 L94 32 L94 122 L68 130 Z"/>
+  </g>
+  <path d="M50 70 L74 63 L76 76 L52 83 Z" fill="url(#metal)" opacity="0.95"/>
+  <path fill="url(#ribbon)" d="M104 14 C104 46 86 63 60 73 C34 83 18 103 22 134 L35 129 C31 104 46 87 69 78 C93 67 95 44 93 16 Z"/>
+</svg>
