@@ -7,6 +7,7 @@ import StoriesSection from '@/components/sections/StoriesSection.vue'
 import ServicesSection from '@/components/sections/ServicesSection.vue'
 import CeoStorySection from '@/components/sections/CeoStorySection.vue'
 import HcaiSection from '@/components/sections/HcaiSection.vue'
+import HcaiResourcesSection from '@/components/sections/HcaiResourcesSection.vue'
 import FutureVisionSection from '@/components/sections/FutureVisionSection.vue'
 import CtaSection from '@/components/sections/CtaSection.vue'
 import { useI18n } from '@/composables/useI18n'
@@ -34,6 +35,7 @@ useSeo()
     <ServicesSection />
     <CeoStorySection />
     <HcaiSection />
+    <HcaiResourcesSection />
     <FutureVisionSection />
     <CtaSection />
   </main>

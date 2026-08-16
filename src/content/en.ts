@@ -24,6 +24,7 @@ export const en: SiteContent = {
       { id: 'services', label: 'Services' },
       { id: 'founder', label: 'Our Story' },
       { id: 'human-centered', label: 'Human-Centered AI' },
+      { id: 'hcai-resources', label: 'Human-Centered AI Resources' },
       { id: 'vision', label: 'Vision' },
     ],
     cta: 'Start the Conversation',
@@ -389,6 +390,76 @@ export const en: SiteContent = {
       'A future worth building is not a smarter city. It is an ordinary Tuesday where the work fits inside the day.',
   },
 
+  hcaiResources: {
+    eyebrow: 'Inspiration',
+    title: 'Human-Centered AI Resources',
+    lead: 'People who inspire our philosophy and shape the future of AI that empowers humans.',
+    thoughtLeaders: [
+      {
+        id: 'shneiderman',
+        name: 'Ben Shneiderman',
+        role: 'Father of Human-Centered AI',
+        body: 'Ben Shneiderman pioneered the Human-Centered AI movement, advocating that AI should augment and empower people rather than replace them.',
+        href: 'https://www.hcil.umd.edu/human-centered-ai/',
+      },
+      {
+        id: 'li',
+        name: 'Fei-Fei Li',
+        role: 'Co-Founder, Stanford Human-Centered AI Institute',
+        body: 'Fei-Fei Li promotes an AI future where technological advancement and human values progress together.',
+        href: 'https://hai.stanford.edu',
+      },
+      {
+        id: 'mollick',
+        name: 'Ethan Mollick',
+        role: 'AI Collaboration and Future of Work',
+        body: 'Ethan Mollick explores how people and AI can work together to unlock creativity, productivity, and learning.',
+        href: 'https://www.oneusefulthing.org',
+      },
+    ],
+    resourcesTitle: 'Additional Resources',
+    resources: [
+      {
+        id: 'stanford-hai',
+        name: 'Stanford HAI',
+        description: "Stanford's institute for research and policy on human-centered artificial intelligence.",
+        href: 'https://hai.stanford.edu',
+      },
+      {
+        id: 'hcil',
+        name: 'Human-Computer Interaction Lab',
+        description: 'The University of Maryland lab where the Human-Centered AI movement took shape.',
+        href: 'https://hcil.umd.edu',
+      },
+      {
+        id: 'partnership-on-ai',
+        name: 'Partnership on AI',
+        description: 'A coalition of industry, academia, and civil society building responsible AI practices.',
+        href: 'https://partnershiponai.org',
+      },
+      {
+        id: 'ai-now',
+        name: 'AI Now Institute',
+        description: 'A research institute examining the social implications of AI and algorithmic systems.',
+        href: 'https://ainowinstitute.org',
+      },
+      {
+        id: 'chm',
+        name: 'Center for Humans and Machines',
+        description: 'Research on how humans and machines can collaborate, learn, and reason together.',
+        href: 'https://www.mpib-berlin.mpg.de/chm',
+      },
+    ],
+    philosophy: {
+      title: 'Why These Voices Matter',
+      paragraphs: [
+        'At Hyper Helix AI Solutions, we believe that the true purpose of artificial intelligence is not to replace people, but to help people thrive.',
+        'The thinkers and organizations highlighted here inspire our Human-Centered AI philosophy. Their work reinforces our commitment to creating solutions that increase efficiency, support creativity, strengthen collaboration, and enrich the value of human life.',
+      ],
+      closing: 'Technology is most meaningful when it serves people.',
+    },
+  },
+
   cta: {
     eyebrow: "Let's talk",
     title: "Let's Build a Better Future Together",
@@ -417,6 +488,7 @@ export const en: SiteContent = {
           { id: 'services', label: 'Services' },
           { id: 'stories', label: 'Real Stories' },
           { id: 'human-centered', label: 'Human-Centered AI' },
+          { id: 'hcai-resources', label: 'Human-Centered AI Resources' },
         ],
       },
       {

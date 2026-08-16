@@ -24,6 +24,7 @@ export const ko: SiteContent = {
       { id: 'services', label: '서비스' },
       { id: 'founder', label: '우리의 이야기' },
       { id: 'human-centered', label: '인간 중심 AI' },
+      { id: 'hcai-resources', label: '인간 중심 AI 자료' },
       { id: 'vision', label: '비전' },
     ],
     cta: '대화 시작하기',
@@ -389,6 +390,76 @@ export const ko: SiteContent = {
       '만들 가치가 있는 미래는 더 똑똑한 도시가 아닙니다. 일이 하루 안에 들어오는 평범한 화요일입니다.',
   },
 
+  hcaiResources: {
+    eyebrow: '영감',
+    title: '인간 중심 AI 자료',
+    lead: '우리의 철학에 영감을 주고, 사람을 확장하는 AI의 미래를 그리는 사람들입니다.',
+    thoughtLeaders: [
+      {
+        id: 'shneiderman',
+        name: 'Ben Shneiderman',
+        role: '인간 중심 AI의 창시자',
+        body: 'Ben Shneiderman은 인간 중심 AI 운동을 이끌며, AI가 사람을 대체하는 것이 아니라 확장하고 힘을 실어주어야 한다고 주장했습니다.',
+        href: 'https://www.hcil.umd.edu/human-centered-ai/',
+      },
+      {
+        id: 'li',
+        name: 'Fei-Fei Li',
+        role: 'Stanford Human-Centered AI Institute 공동 설립자',
+        body: 'Fei-Fei Li는 기술의 발전과 인간의 가치가 함께 나아가는 AI의 미래를 제시합니다.',
+        href: 'https://hai.stanford.edu',
+      },
+      {
+        id: 'mollick',
+        name: 'Ethan Mollick',
+        role: 'AI 협업과 미래의 일',
+        body: 'Ethan Mollick은 사람과 AI가 함께 일하며 창의성, 생산성, 학습을 어떻게 끌어올릴 수 있는지 연구합니다.',
+        href: 'https://www.oneusefulthing.org',
+      },
+    ],
+    resourcesTitle: '추가 자료',
+    resources: [
+      {
+        id: 'stanford-hai',
+        name: 'Stanford HAI',
+        description: '인간 중심 인공지능 연구와 정책을 다루는 스탠퍼드대학교의 연구기관입니다.',
+        href: 'https://hai.stanford.edu',
+      },
+      {
+        id: 'hcil',
+        name: 'Human-Computer Interaction Lab',
+        description: '인간 중심 AI 운동이 시작된 메릴랜드대학교의 연구소입니다.',
+        href: 'https://hcil.umd.edu',
+      },
+      {
+        id: 'partnership-on-ai',
+        name: 'Partnership on AI',
+        description: '산업계, 학계, 시민사회가 함께 책임 있는 AI 실천 방안을 만드는 연합체입니다.',
+        href: 'https://partnershiponai.org',
+      },
+      {
+        id: 'ai-now',
+        name: 'AI Now Institute',
+        description: 'AI와 알고리즘 시스템이 사회에 미치는 영향을 연구하는 연구기관입니다.',
+        href: 'https://ainowinstitute.org',
+      },
+      {
+        id: 'chm',
+        name: 'Center for Humans and Machines',
+        description: '사람과 기계가 함께 협력하고, 배우고, 사고하는 방법을 연구합니다.',
+        href: 'https://www.mpib-berlin.mpg.de/chm',
+      },
+    ],
+    philosophy: {
+      title: '이 목소리들이 중요한 이유',
+      paragraphs: [
+        'Hyper Helix AI Solutions는 인공지능의 진짜 목적이 사람을 대체하는 것이 아니라, 사람이 더 잘 살아가도록 돕는 것이라고 믿습니다.',
+        '여기 소개한 사상가와 기관들은 우리의 인간 중심 AI 철학에 영감을 주었습니다. 이들의 연구는 효율을 높이고, 창의성을 지지하고, 협업을 강화하고, 인간 삶의 가치를 풍요롭게 하는 솔루션을 만들겠다는 우리의 다짐을 뒷받침합니다.',
+      ],
+      closing: '기술은 사람을 위해 쓰일 때 가장 의미가 있습니다.',
+    },
+  },
+
   cta: {
     eyebrow: '이야기를 시작하세요',
     title: '더 나은 미래를 함께 만들어요',
@@ -417,6 +488,7 @@ export const ko: SiteContent = {
           { id: 'services', label: '서비스' },
           { id: 'stories', label: '실제 사례' },
           { id: 'human-centered', label: '인간 중심 AI' },
+          { id: 'hcai-resources', label: '인간 중심 AI 자료' },
         ],
       },
       {

@@ -83,6 +83,21 @@ export interface VisionPillar {
   body: string
 }
 
+export interface ThoughtLeader {
+  id: string
+  name: string
+  role: string
+  body: string
+  href: string
+}
+
+export interface ResourceLink {
+  id: string
+  name: string
+  description: string
+  href: string
+}
+
 export interface SiteContent {
   meta: {
     /** Used for <html lang> and Open Graph locale. */
@@ -170,6 +185,20 @@ export interface SiteContent {
     lead: string
     pillars: VisionPillar[]
     closing: string
+  }
+
+  hcaiResources: {
+    eyebrow: string
+    title: string
+    lead: string
+    thoughtLeaders: ThoughtLeader[]
+    resourcesTitle: string
+    resources: ResourceLink[]
+    philosophy: {
+      title: string
+      paragraphs: string[]
+      closing: string
+    }
   }
 
   cta: {
