@@ -397,7 +397,7 @@ export const en: SiteContent = {
     button: 'Start the Conversation',
     secondary: 'See our services',
     email: 'hello@hyperhelix.ai',
-    reassurance: 'A real conversation, not a sales sequence. We reply within two business days.',
+    reassurance: 'A real conversation, not a sales sequence.',
   },
 
   footer: {
