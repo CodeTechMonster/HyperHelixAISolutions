@@ -276,6 +276,7 @@ export const ko: SiteContent = {
         year: '12년',
         title: '한국GM 연구소, 엔진 제어 개발 Engineer',
         body: '기계공학을 전공하고 연구소에서 엔진 제어 시스템을 개발했습니다. 소수점 셋째 자리까지 측정하고, 감으로는 아무것도 출시하지 않는 곳이었습니다.',
+        link: { label: 'gm-korea.co.kr', href: 'https://www.gm-korea.co.kr/en/home.html' },
       },
       {
         year: '6년',
@@ -287,11 +288,13 @@ export const ko: SiteContent = {
         year: '현재',
         title: 'Hyundai Glovis Canada Inc., IT Security Supervisor',
         body: '이곳은 HCAI의 가치를 이루어가고 있는 소중한 곳입니다.',
+        link: { label: 'gloviscanada.com', href: 'https://gloviscanada.com/' },
       },
       {
         year: '또 하나의 현재',
         title: 'Hyper Helix AI Solutions',
         body: '사람에게 시간을 돌려주고, 그 시간으로 무엇을 하는지를 진짜 목적으로 삼는 AI를 만듭니다.',
+        link: { label: 'hyperhelix.ca', href: 'https://hyperhelix.ca/' },
       },
     ],
     signature: {

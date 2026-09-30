@@ -276,6 +276,7 @@ export const en: SiteContent = {
         year: '12 years',
         title: 'Engine control development, GM Korea',
         body: 'Mechanical engineering by training, then engine control systems at the R&D center — where precision is measured to three decimals and nothing ships on intuition.',
+        link: { label: 'gm-korea.co.kr', href: 'https://www.gm-korea.co.kr/en/home.html' },
       },
       {
         year: '6 years',
@@ -287,11 +288,13 @@ export const en: SiteContent = {
         year: 'Today',
         title: 'Hyundai Glovis Canada Inc., IT Security Supervisor',
         body: 'A place where I get to put HCAI’s values into practice.',
+        link: { label: 'gloviscanada.com', href: 'https://gloviscanada.com/' },
       },
       {
         year: 'Also today',
         title: 'Hyper Helix AI Solutions',
         body: 'Building AI that gives people their time back — and treats what they do with it as the real purpose.',
+        link: { label: 'hyperhelix.ca', href: 'https://hyperhelix.ca/' },
       },
     ],
     signature: {
