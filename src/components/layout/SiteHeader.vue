@@ -4,6 +4,7 @@ import BrandLogo from '@/components/brand/BrandLogo.vue'
 import LanguageToggle from './LanguageToggle.vue'
 import AppButton from '@/components/ui/AppButton.vue'
 import { useI18n } from '@/composables/useI18n'
+import { onStartConversation } from '@/components/chatbot/openChatbot'
 
 const { t } = useI18n()
 
@@ -26,6 +27,11 @@ function onScroll() {
 
 function closeMenu() {
   isMenuOpen.value = false
+}
+
+function startConversationFromMenu(event: MouseEvent) {
+  closeMenu()
+  onStartConversation(event)
 }
 
 function onKeydown(event: KeyboardEvent) {
@@ -113,7 +119,11 @@ onBeforeUnmount(() => {
           <!-- Wrapper handles the breakpoint: `hidden` on the button itself
                would lose to the button's own `inline-flex` display utility. -->
           <span class="hidden md:block">
-            <AppButton href="#contact" :variant="tone === 'dark' ? 'onDark' : 'primary'">
+            <AppButton
+              href="#contact"
+              :variant="tone === 'dark' ? 'onDark' : 'primary'"
+              @click="onStartConversation"
+            >
               {{ t.nav.cta }}
             </AppButton>
           </span>
@@ -170,7 +180,13 @@ onBeforeUnmount(() => {
               {{ link.label }}
             </a>
           </nav>
-          <AppButton href="#contact" variant="primary" size="lg" class="mt-7 w-full" @click="closeMenu">
+          <AppButton
+            href="#contact"
+            variant="primary"
+            size="lg"
+            class="mt-7 w-full"
+            @click="startConversationFromMenu"
+          >
             {{ t.nav.cta }}
           </AppButton>
         </div>

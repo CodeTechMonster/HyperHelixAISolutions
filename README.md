@@ -55,6 +55,7 @@ Also included:
 | Reorder or remove a section | `src/App.vue` |
 | Adjust the helix animation | `src/components/visuals/HelixCanvas.vue` |
 | Update meta tags or JSON-LD | `src/composables/useSeo.ts` |
+| Configure or disable the AI chatbot | `src/components/chatbot/chatbot.config.ts` |
 
 Every user-facing string is in the content files and typed against `SiteContent`.
 Components contain no literal copy — so copy edits never require touching a `.vue`
@@ -75,6 +76,100 @@ file, and adding a locale surfaces every missing string as a type error.
    `docs/04-responsive-and-performance.md`.
 
 Deploys as static output to any host (Vercel, Netlify, Cloudflare Pages, S3).
+
+## Hyper Helix AI chatbot
+
+A floating assistant in the lower-right corner. The model, an open Qwen3 model, runs
+**on the visitor's own device** in the browser. It costs $0: no paid APIs, no server,
+no Hugging Face Space, no secrets, and nothing to set up beyond deploying the site.
+
+### How it works
+
+```
+hyperhelix.ca (GitHub Pages, static)
+  └─ HyperHelixChatbot.vue ──> chatService.ts ──> Web Worker (browserModel.worker.ts)
+                                                     └─ transformers.js + WebGPU
+                                                          └─ onnx-community/Qwen3-0.6B-ONNX
+                                                             (downloaded once from the HF Hub)
+```
+
+- On first use, the panel asks the visitor to **load the AI** (about 580 MB, one time).
+  The files come straight from the Hugging Face Hub and are cached by the browser, so
+  later visits load them from the cache without asking again.
+- The model runs in a Web Worker on the visitor's GPU (WebGPU), so the page never
+  freezes. Replies stream in token by token, and a stop button cancels generation.
+- **Privacy:** conversations never leave the device. They aren't sent to a server,
+  stored or logged. Reloading the page starts fresh.
+- The panel says clearly that this is an **experimental** small AI and shows the
+  model's spec (name, size, license, where it runs) so visitors know what to expect.
+- Every "Start the Conversation" button on the site (header, mobile menu, the closing
+  call-to-action section, the footer link) opens the chatbot. With the chatbot disabled,
+  those buttons go back to their original targets.
+- The UI only knows the `ChatService` interface, so a different backend could be
+  added later without touching the component.
+- Nothing loads until the visitor opens the chat. The widget is an ~18 kB chunk; the
+  worker and inference runtime (~0.5 MB) load only after the visitor opts in.
+
+| File | Role |
+|---|---|
+| `src/components/chatbot/chatbot.config.ts` | **Single config point**: on/off flag, model and its spec card, system prompt, welcome message |
+| `src/components/chatbot/chatService.ts` | Talks to the model worker; the only thing the UI depends on |
+| `src/components/chatbot/browserModel.worker.ts` | Loads and runs the model (transformers.js) off the main thread |
+| `src/components/chatbot/HyperHelixChatbot.vue` | Launcher, panel, setup card, messages, composer |
+| `src/components/chatbot/chatbot.content.ts` | EN/KO UI copy |
+| `src/components/chatbot/openChatbot.ts` | Lets other components (the CTA buttons) open the panel |
+
+### Browser support
+
+The model needs **WebGPU with 16-bit shader support**:
+
+- Desktop Chrome or Edge, and recent Safari: generally supported.
+- Phones: possible on recent devices, but slow and memory-hungry.
+- Unsupported browsers: the panel explains that the on-device AI can't run there.
+  The rest of the site is unaffected.
+
+### Run locally
+
+```bash
+npm install
+npm run dev        # http://localhost:5173 → open the chat → "Load the AI"
+```
+
+### Deploy
+
+Nothing extra to do. Push to `main`, and GitHub Actions builds and publishes to GitHub
+Pages as before.
+
+### Change the system prompt
+
+Edit `systemPrompt` in `chatbot.config.ts`.
+
+### Change the model
+
+Set `model.id`, `model.downloadSizeMB` and the spec card in `model.info` in
+`chatbot.config.ts`. Any ONNX chat
+model on the Hub that ships a `q4f16` build and works with transformers.js
+`AutoModelForCausalLM` should work. The `onnx-community` organization has many.
+
+- `onnx-community/Qwen3-0.6B-ONNX` (default): about 580 MB, fast, basic quality.
+- `onnx-community/Qwen3-1.7B-ONNX`: better answers, but a much bigger download.
+  Check the file size of `onnx/model_q4f16.onnx` on the model page before switching.
+
+The worker passes `enable_thinking: false` to the chat template so that Qwen3 answers
+directly. Other models' templates ignore that setting.
+
+### Disable the chatbot
+
+Set `enabled: false` in `chatbot.config.ts`. The component is never rendered, its
+code never loads, and the "Start the Conversation" buttons go back to their original
+targets. To remove it completely:
+
+1. Delete `src/components/chatbot/`.
+2. Remove the chatbot imports, the `HyperHelixChatbot` constant and the
+   `<HyperHelixChatbot>` tag from `src/App.vue`.
+3. Remove the `onStartConversation` import and its `@click` handlers from
+   `SiteHeader.vue`, `SiteFooter.vue` and `CtaSection.vue`.
+4. Run `npm uninstall @huggingface/transformers`.
 
 ## Documentation
 

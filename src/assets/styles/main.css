@@ -125,6 +125,12 @@
 
   html {
     -webkit-text-size-adjust: 100%;
+    /* Decorative .hh-aurora blooms sit at negative offsets. On mobile, body's
+       overflow-x alone doesn't stop them widening the layout viewport, which
+       pushed the header and fixed UI off-screen. `clip` (unlike `hidden`)
+       creates no scroll container, so sticky/fixed positioning is unaffected. */
+    overflow-x: hidden;
+    overflow-x: clip;
   }
 
   body {

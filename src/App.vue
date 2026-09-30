@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { defineAsyncComponent } from 'vue'
 import SiteHeader from '@/components/layout/SiteHeader.vue'
 import SiteFooter from '@/components/layout/SiteFooter.vue'
 import HeroSection from '@/components/sections/HeroSection.vue'
@@ -12,6 +13,12 @@ import FutureVisionSection from '@/components/sections/FutureVisionSection.vue'
 import CtaSection from '@/components/sections/CtaSection.vue'
 import { useI18n } from '@/composables/useI18n'
 import { useSeo } from '@/composables/useSeo'
+import { CHATBOT_CONFIG } from '@/components/chatbot/chatbot.config'
+
+// Optional chatbot, loaded after first paint. Toggle via CHATBOT_CONFIG.enabled.
+const HyperHelixChatbot = defineAsyncComponent(
+  () => import('@/components/chatbot/HyperHelixChatbot.vue'),
+)
 
 const { t } = useI18n()
 useSeo()
@@ -41,4 +48,6 @@ useSeo()
   </main>
 
   <SiteFooter />
+
+  <HyperHelixChatbot v-if="CHATBOT_CONFIG.enabled" />
 </template>

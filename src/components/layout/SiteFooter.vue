@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import BrandLogo from '@/components/brand/BrandLogo.vue'
 import { useI18n } from '@/composables/useI18n'
+import { onStartConversation } from '@/components/chatbot/openChatbot'
 
 const { t, isCJK } = useI18n()
 </script>
@@ -36,6 +37,7 @@ const { t, isCJK } = useI18n()
                 <a
                   :href="`#${link.id}`"
                   class="text-sm text-mist-400 transition-colors duration-200 hover:text-white"
+                  @click="link.id === 'contact' && onStartConversation($event)"
                 >
                   {{ link.label }}
                 </a>

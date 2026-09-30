@@ -3,6 +3,7 @@ import AppButton from '@/components/ui/AppButton.vue'
 import RevealOnScroll from '@/components/ui/RevealOnScroll.vue'
 import HelixMark from '@/components/brand/HelixMark.vue'
 import { useI18n } from '@/composables/useI18n'
+import { onStartConversation } from '@/components/chatbot/openChatbot'
 
 const { t, isCJK } = useI18n()
 </script>
@@ -49,7 +50,12 @@ const { t, isCJK } = useI18n()
 
       <RevealOnScroll :delay="280">
         <div class="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
-          <AppButton :href="`mailto:${t.cta.email}`" variant="primary" size="lg">
+          <AppButton
+            :href="`mailto:${t.cta.email}`"
+            variant="primary"
+            size="lg"
+            @click="onStartConversation"
+          >
             {{ t.cta.button }}
           </AppButton>
           <AppButton href="#services" variant="onDark" size="lg">
