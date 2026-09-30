@@ -117,7 +117,7 @@ applied to body copy.
   `opacity: 1; transform: none`, and if `IntersectionObserver` is unavailable the
   composable reveals immediately. Content is never trapped behind an animation that
   did not fire.
-- **`<noscript>`** carries the positioning line and a mailto, so the page is not a
+- **`<noscript>`** carries the positioning line, so the page is not a
   blank div without JavaScript.
 - **Card hover states are mirrored with `focus-within`,** so a keyboard user sees the
   same emphasis a mouse user does.

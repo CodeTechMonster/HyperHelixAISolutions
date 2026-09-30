@@ -27,6 +27,20 @@ export type IconName =
   | 'network'
   | 'spark'
 
+export type LegalDocumentId = 'privacy' | 'terms' | 'accessibility'
+
+export interface LegalDocument {
+  /** Also the URL hash that opens it, e.g. `#privacy`. */
+  id: LegalDocumentId
+  /** Footer link text. */
+  label: string
+  title: string
+  /** Human-readable date shown under the title. */
+  updated: string
+  intro: string
+  sections: { heading: string; paragraphs?: string[]; list?: string[] }[]
+}
+
 export interface NavLink {
   /** Matches the `id` attribute of the target <section>. */
   id: string
@@ -207,14 +221,17 @@ export interface SiteContent {
     lead: string
     button: string
     secondary: string
-    email: string
     reassurance: string
   }
 
   footer: {
     tagline: string
     columns: { title: string; links: NavLink[] }[]
-    legal: string[]
+    legal: LegalDocument[]
+    /** Shared chrome of the legal dialog. */
+    legalUi: { lastUpdated: string; contact: string; close: string }
+    /** Shown where the contact email will go, until one is set. */
+    contactNote: string
     copyright: string
   }
 

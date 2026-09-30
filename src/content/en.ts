@@ -470,7 +470,6 @@ export const en: SiteContent = {
       'Tell us about the work that is eating your team’s week. We will tell you honestly whether AI is the right answer — and what we would do about it if it is.',
     button: 'Start the Conversation',
     secondary: 'See our services',
-    email: 'hello@hyperhelix.ai',
     reassurance: 'A real conversation, not a sales sequence.',
   },
 
@@ -499,7 +498,148 @@ export const en: SiteContent = {
         links: [{ id: 'contact', label: 'Start the Conversation' }],
       },
     ],
-    legal: ['Privacy', 'Terms', 'Accessibility'],
+    legal: [
+      {
+        id: 'privacy',
+        label: 'Privacy',
+        title: 'Privacy Policy',
+        updated: 'September 30, 2026',
+        intro:
+          'Hyper Helix (hyperhelix.ca) is a personal technology project. This page explains, in plain language, what happens to your information when you visit. The short version: we don’t collect personal information, use cookies, or run analytics.',
+        sections: [
+          {
+            heading: 'What we collect',
+            paragraphs: [
+              'We do not collect, store or sell personal information. The site has no accounts, no forms that send data to us, no cookies, and no analytics or advertising trackers.',
+            ],
+          },
+          {
+            heading: 'What is stored on your device',
+            paragraphs: [
+              'Your language choice (English or Korean) is saved in your browser’s local storage so the site remembers it next time.',
+              'If you use the Hyper Helix AI chatbot, its model files (about 580 MB) are saved in your browser’s cache so they don’t have to be downloaded again. You can delete both at any time by clearing this site’s data in your browser settings.',
+            ],
+          },
+          {
+            heading: 'The Hyper Helix AI chatbot',
+            paragraphs: [
+              'The chatbot runs entirely on your own device. What you type and the answers you receive are never sent to us or to any server, and they are not saved — reloading the page erases the conversation.',
+              'Its model is downloaded only if you choose to load it.',
+            ],
+          },
+          {
+            heading: 'Third-party services',
+            paragraphs: [
+              'Like any website, loading this one involves a few providers. They receive your IP address and basic browser information as part of a normal web request, and handle it under their own privacy policies:',
+            ],
+            list: [
+              'GitHub Pages — hosts the site.',
+              'Google Fonts and jsDelivr — deliver the site’s fonts.',
+              'Hugging Face and jsDelivr — deliver the chatbot’s model files and runtime, only if you load the chatbot.',
+            ],
+          },
+          {
+            heading: 'Links to other sites',
+            paragraphs: [
+              'This site links to other organizations’ websites. Their privacy practices are their own; please check their policies.',
+            ],
+          },
+          {
+            heading: 'Changes',
+            paragraphs: [
+              'If this policy changes, the new version will be posted here with an updated date.',
+            ],
+          },
+        ],
+      },
+      {
+        id: 'terms',
+        label: 'Terms',
+        title: 'Terms of Use',
+        updated: 'September 30, 2026',
+        intro:
+          'By using hyperhelix.ca you agree to these terms. We have kept them short and readable.',
+        sections: [
+          {
+            heading: 'About this site',
+            paragraphs: [
+              'Hyper Helix is a personal project that shares ideas about human-centered AI. Its content is general information, not professional, legal, financial or technical advice for your situation.',
+            ],
+          },
+          {
+            heading: 'The Hyper Helix AI chatbot',
+            paragraphs: [
+              'The chatbot is an experimental, small open-source AI model that runs on your device (its details are shown in the chat panel). Its answers can be inaccurate, incomplete or made up. Do not rely on them for important decisions, and check anything that matters with a trustworthy source.',
+              'Please don’t use the chatbot for anything unlawful or harmful.',
+            ],
+          },
+          {
+            heading: 'Acceptable use',
+            paragraphs: [
+              'Please don’t try to disrupt the site, access it in ways that could harm it or other visitors, or misrepresent its content.',
+            ],
+          },
+          {
+            heading: 'Intellectual property',
+            paragraphs: [
+              'The site’s text, design and branding belong to Hyper Helix unless stated otherwise. You are welcome to link to any page. Organizations, names and resources mentioned on the site belong to their respective owners, and the chatbot’s model is used under its open-source license.',
+            ],
+          },
+          {
+            heading: 'No warranty',
+            paragraphs: [
+              'The site and the chatbot are provided “as is”, without warranties of any kind. To the extent permitted by law, Hyper Helix is not liable for any loss arising from using the site or relying on its content or the chatbot’s answers.',
+            ],
+          },
+          {
+            heading: 'Changes',
+            paragraphs: ['These terms may be updated; the date above shows the current version.'],
+          },
+        ],
+      },
+      {
+        id: 'accessibility',
+        label: 'Accessibility',
+        title: 'Accessibility Statement',
+        updated: 'September 30, 2026',
+        intro:
+          'We want this site to work for everyone, including people who use a keyboard, a screen reader or other assistive technology.',
+        sections: [
+          {
+            heading: 'Our goal',
+            paragraphs: [
+              'We aim to meet the Web Content Accessibility Guidelines (WCAG) 2.1 at level AA.',
+            ],
+          },
+          {
+            heading: 'What we have done',
+            list: [
+              'A “Skip to main content” link and clear page landmarks.',
+              'Everything can be used with a keyboard, with a clearly visible focus outline.',
+              'Text colours chosen for strong contrast; text resizes and reflows without horizontal scrolling.',
+              'Animations are reduced when your device asks for reduced motion.',
+              'English and Korean versions, with the page language set for screen readers.',
+              'The chatbot works by keyboard, announces new messages to screen readers, and supports Korean input methods.',
+            ],
+          },
+          {
+            heading: 'Known limitations',
+            list: [
+              'The Hyper Helix AI chatbot needs a browser with WebGPU, such as a recent Chrome or Edge on a computer. Other browsers can’t run it; the rest of the site is unaffected.',
+              'Chatbot answers are generated automatically and may be unclear or inaccurate.',
+            ],
+          },
+          {
+            heading: 'Feedback',
+            paragraphs: [
+              'If something on this site is hard to use, we want to hear about it. A contact email will be added here soon.',
+            ],
+          },
+        ],
+      },
+    ],
+    legalUi: { lastUpdated: 'Last updated', contact: 'Contact', close: 'Close' },
+    contactNote: 'Contact email coming soon.',
     copyright: '© 2026 Hyper Helix AI Solutions. All rights reserved.',
   },
 

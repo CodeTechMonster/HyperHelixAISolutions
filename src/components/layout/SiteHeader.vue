@@ -1,17 +1,49 @@
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import BrandLogo from '@/components/brand/BrandLogo.vue'
 import LanguageToggle from './LanguageToggle.vue'
 import AppButton from '@/components/ui/AppButton.vue'
 import { useI18n } from '@/composables/useI18n'
 import { onStartConversation } from '@/components/chatbot/openChatbot'
 
-const { t } = useI18n()
+const { t, locale } = useI18n()
 
 const isScrolled = ref(false)
 const isMenuOpen = ref(false)
 const activeSection = ref<string>('')
 const menuPanel = ref<HTMLElement | null>(null)
+const headerRow = ref<HTMLElement | null>(null)
+
+/**
+ * The desktop nav collapses into the menu button whenever it would overflow
+ * the header row — e.g. the longer English labels on a narrower desktop. It
+ * re-expands once the row is wide enough again for the width it needed.
+ */
+const navCollapsed = ref(false)
+let navNeededWidth = 0
+
+function fitNav() {
+  const row = headerRow.value
+  if (!row) return
+  if (!navCollapsed.value) {
+    if (row.scrollWidth > row.clientWidth + 1) {
+      navNeededWidth = row.scrollWidth
+      navCollapsed.value = true
+    }
+  } else if (row.clientWidth >= navNeededWidth) {
+    navCollapsed.value = false
+    closeMenu() // the inline nav takes over from the menu panel
+    void nextTick(fitNav)
+  }
+}
+
+// Labels change length with the language: measure again from scratch.
+watch(locale, () => {
+  navCollapsed.value = false
+  void nextTick(fitNav)
+})
+
+let rowObserver: ResizeObserver | null = null
 
 /** Over the dark hero the header is transparent-on-dark; once the user scrolls
  *  past it, the header condenses into a light glass bar. */
@@ -50,6 +82,13 @@ watch(isMenuOpen, (open) => {
 })
 
 onMounted(() => {
+  if (headerRow.value) {
+    rowObserver = new ResizeObserver(fitNav)
+    rowObserver.observe(headerRow.value)
+  }
+  // Web fonts change label widths once they arrive.
+  void document.fonts?.ready.then(fitNav)
+
   onScroll()
   window.addEventListener('scroll', onScroll, { passive: true })
   window.addEventListener('keydown', onKeydown)
@@ -74,6 +113,7 @@ onBeforeUnmount(() => {
   window.removeEventListener('scroll', onScroll)
   window.removeEventListener('keydown', onKeydown)
   sectionObserver?.disconnect()
+  rowObserver?.disconnect()
   document.body.style.overflow = ''
 })
 </script>
@@ -83,14 +123,18 @@ onBeforeUnmount(() => {
     class="fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-500"
     :class="isScrolled || isMenuOpen ? 'hh-glass-strong' : 'bg-transparent'"
   >
-    <div class="hh-container">
-      <div class="flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
+    <div class="hh-container max-w-[90rem]">
+      <div ref="headerRow" class="flex h-[4.5rem] items-center justify-between gap-6 lg:h-20">
         <a href="#top" class="shrink-0 rounded-lg" @click="closeMenu">
           <BrandLogo :tone="tone === 'dark' ? 'dark' : 'light'" />
         </a>
 
         <!-- Desktop navigation -->
-        <nav class="hidden items-center gap-0.5 xl:flex" aria-label="Primary">
+        <nav
+          class="hidden items-center gap-0.5"
+          :class="{ 'xl:flex': !navCollapsed }"
+          aria-label="Primary"
+        >
           <a
             v-for="link in t.nav.links"
             :key="link.id"
@@ -132,12 +176,13 @@ onBeforeUnmount(() => {
           <button
             type="button"
             data-menu-trigger
-            class="inline-flex h-11 w-11 items-center justify-center rounded-pill xl:hidden"
-            :class="
+            class="inline-flex h-11 w-11 items-center justify-center rounded-pill"
+            :class="[
+              !navCollapsed && 'xl:hidden',
               tone === 'dark'
                 ? 'text-white ring-1 ring-white/20'
-                : 'text-space-800 ring-1 ring-mist-300'
-            "
+                : 'text-space-800 ring-1 ring-mist-300',
+            ]"
             :aria-expanded="isMenuOpen"
             aria-controls="mobile-menu"
             :aria-label="isMenuOpen ? t.nav.menuClose : t.nav.menuOpen"
@@ -163,7 +208,7 @@ onBeforeUnmount(() => {
         v-if="isMenuOpen"
         id="mobile-menu"
         ref="menuPanel"
-        class="xl:hidden"
+        :class="{ 'xl:hidden': !navCollapsed }"
         role="dialog"
         aria-modal="true"
         :aria-label="t.a11y.mainLandmark"

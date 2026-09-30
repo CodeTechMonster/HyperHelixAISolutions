@@ -56,6 +56,7 @@ Also included:
 | Adjust the helix animation | `src/components/visuals/HelixCanvas.vue` |
 | Update meta tags or JSON-LD | `src/composables/useSeo.ts` |
 | Configure or disable the AI chatbot | `src/components/chatbot/chatbot.config.ts` |
+| Edit the Privacy / Terms / Accessibility text | `footer.legal` in `src/content/en.ts` / `ko.ts` (opened at `/#privacy`, `/#terms`, `/#accessibility`) |
 
 Every user-facing string is in the content files and typed against `SiteContent`.
 Components contain no literal copy — so copy edits never require touching a `.vue`
@@ -68,11 +69,9 @@ file, and adding a locale surfaces every missing string as a type error.
 2. **Add the two raster assets** referenced by `index.html`: `public/og-image.png`
    (1200×630) and `public/apple-touch-icon.png` (180×180). Both can be generated from
    `public/favicon.svg`.
-3. **Replace the contact email** — currently `hello@hyperhelix.ai` in both content
-   files.
-4. **Drop in a founder photo** if you have one. `CeoStorySection.vue` has a marked
+3. **Drop in a founder photo** if you have one. `CeoStorySection.vue` has a marked
    placeholder plate; swap the inner block for an `<img>` at 4:5, `object-cover`.
-5. **Self-host the fonts** for the last few Lighthouse points — see
+4. **Self-host the fonts** for the last few Lighthouse points — see
    `docs/04-responsive-and-performance.md`.
 
 Deploys as static output to any host (Vercel, Netlify, Cloudflare Pages, S3).

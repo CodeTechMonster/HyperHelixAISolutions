@@ -51,7 +51,7 @@ const { t, isCJK } = useI18n()
       <RevealOnScroll :delay="280">
         <div class="mt-11 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <AppButton
-            :href="`mailto:${t.cta.email}`"
+            href="#contact"
             variant="primary"
             size="lg"
             @click="onStartConversation"

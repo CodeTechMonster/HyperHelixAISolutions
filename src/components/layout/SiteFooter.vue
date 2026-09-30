@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import BrandLogo from '@/components/brand/BrandLogo.vue'
+import LegalDialog from './LegalDialog.vue'
 import { useI18n } from '@/composables/useI18n'
 import { onStartConversation } from '@/components/chatbot/openChatbot'
 
@@ -21,12 +22,9 @@ const { t, isCJK } = useI18n()
           <p class="mt-6 max-w-xs text-sm leading-relaxed" :class="isCJK && 'lang-ko'">
             {{ t.footer.tagline }}
           </p>
-          <a
-            :href="`mailto:${t.cta.email}`"
-            class="mt-6 inline-block text-sm font-semibold text-cyan-300 underline-offset-4 hover:underline"
-          >
-            {{ t.cta.email }}
-          </a>
+          <p class="mt-6 text-sm text-mist-400" :class="isCJK && 'lang-ko'">
+            {{ t.footer.contactNote }}
+          </p>
         </div>
 
         <div class="grid gap-10 sm:grid-cols-3">
@@ -52,8 +50,10 @@ const { t, isCJK } = useI18n()
       <div class="flex flex-col gap-5 text-xs sm:flex-row sm:items-center sm:justify-between">
         <p>{{ t.footer.copyright }}</p>
         <ul class="flex flex-wrap gap-x-6 gap-y-2">
-          <li v-for="item in t.footer.legal" :key="item">
-            <a href="#top" class="transition-colors duration-200 hover:text-white">{{ item }}</a>
+          <li v-for="doc in t.footer.legal" :key="doc.id">
+            <a :href="`#${doc.id}`" class="transition-colors duration-200 hover:text-white">
+              {{ doc.label }}
+            </a>
           </li>
         </ul>
         <a href="#top" class="font-semibold text-cyan-300 hover:text-cyan-200">
@@ -61,5 +61,7 @@ const { t, isCJK } = useI18n()
         </a>
       </div>
     </div>
+
+    <LegalDialog />
   </footer>
 </template>

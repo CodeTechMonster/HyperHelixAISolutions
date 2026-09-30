@@ -91,12 +91,6 @@ export function useSeo() {
       description: c.meta.description,
       slogan: c.footer.tagline,
       address: { '@type': 'PostalAddress', addressRegion: 'Ontario', addressCountry: 'CA' },
-      contactPoint: {
-        '@type': 'ContactPoint',
-        contactType: 'sales',
-        email: c.cta.email,
-        availableLanguage: ['en', 'ko'],
-      },
       knowsAbout: [
         'Human-Centered AI',
         'AI Enablement',
